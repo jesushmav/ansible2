@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Gather facts from db servers
+      ansible.builtin.setup:
+      delegate_to: localhost
+      delegate_facts: true
+      register: salida
+    - name: ver
+      debug:
+        var: salida
+    - name: "Establecer variables para rhel"
+      set_fact:
+        rh_major: "{{ ansible_distribution_version.split('.')[0] |int}}"
+        distribucion: "{{ ansible_distribution }}"
+        numerob: "{{ ansible_machine }}"
+    - name: "Ver fact"
+      debug:
+        msg: "La version es {{ rh_major }} y la distribucion es {{ distribucion }} y el ID es {{ ansible_product_uuid }} y los bits son {{ numerob }}"

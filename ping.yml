@@ -1,0 +1,48 @@
+---
+#- name: Inicializar informe
+#  hosts: all
+#  tasks:
+#    - name: Generar csv
+#      ansible.builtin.template:
+#        src: /playbooks/servidores.j2
+#        dest: /playbooks/servidores.csv
+#      run_once: true
+#      delegate_to: localhost
+- name: proceso
+  hosts: all
+  vars:
+  gather_facts: no
+  tasks:
+    - name: "ping a {{ inventory_hostname }}"
+      ansible.builtin.ping:
+      register: ping
+      ignore_unreachable: true
+    - name: resultado
+      debug:
+        msg: "ACCESIBLE=SI"
+      when: ping.ping == "pong"
+      ignore_errors: true
+
+    - name: resultado no accesible
+      debug:
+        msg: "ACCESIBLE=NO"
+      when: ping.unreachable
+      ignore_errors: true
+
+    - name: "Añadir servidor {{ inventory_hostname }} a servidores.csv"
+      ansible.builtin.lineinfile:
+        path: /playbooks/servidores.csv
+        line: "{{ inventory_hostname }} es accesible"
+      when: ping.ping is defined
+      delegate_to: localhost
+      ignore_errors: true  
+
+
+    - name: "Añadir servidor {{ inventory_hostname }} a servidores.csv"
+      ansible.builtin.lineinfile:
+        path: /playbooks/servidores.csv
+        line: "{{ inventory_hostname }} nooooooooooooooo es accesible"
+      when: ping.unreachable
+      delegate_to: localhost
+      ignore_errors: true
+

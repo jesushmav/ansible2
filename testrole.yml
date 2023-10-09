@@ -1,0 +1,13 @@
+- name: Conexion
+  hosts: localhost
+  vars:
+  gather_facts: no
+  tasks:
+    - name: ejecutar rol
+      ansible.builtin.include_role:
+        name: ../roles/servicenowp 
+      vars: 
+        #nombre: "Jesus"
+        apellido1: "Hernandez"
+        apellido2: "Martin"
+          #corredor: false

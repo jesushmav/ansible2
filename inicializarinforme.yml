@@ -1,0 +1,8 @@
+- name: Inicializar informe
+  hosts: localhost
+  tasks:
+    - name: Generar csv
+      ansible.builtin.template:
+        src: /playbooks/servidores.j2
+        dest: /playbooks/servidores.csv
+      delegate_to: localhost

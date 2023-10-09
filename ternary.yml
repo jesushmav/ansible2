@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  vars:
+    jesus: admin
+    yael: kukikuki
+  tasks:
+    - name: Comprobar usuario
+      debug :
+        msg="{{ (jesus=="admin") | ternary ('Usuario administrador', 'Usuario normal') }}"
+
+    - name: quien lo va a hacer
+      debug:
+        msg: "La persona encargada de recoger la cocina es  {{ yael |default('Jesus') }}"
+
+...

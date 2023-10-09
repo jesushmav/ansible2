@@ -1,0 +1,10 @@
+- name: Conexion
+  hosts: localhost
+  vars:
+    servidor: ""
+  gather_facts: no
+  tasks:
+    - name: "Uso de variables heredadas en jobs de rundeck" 
+      ansible.builtin.debug:
+        msg:
+        - El servidor esssssssssssssssssssssssss {{ servidor }}  

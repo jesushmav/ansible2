@@ -1,0 +1,19 @@
+---
+- hosts: all
+  tasks:
+    - name: ejecutar
+      ansible.builtin.script: sudolist.sh
+      register: salida
+      ignore_errors: true
+    - name: visualizar contenido
+      debug:
+        var: salida 
+    - name: comprobar existencia de fichero
+      ansible.builtin.stat:
+        path: /etc/passwddd
+      register: st
+    - name: ver saliada de st
+      debug:
+        msg: "El fichero si que existe"
+      when: st.stat.path != ""
+      ignore_errors: true
