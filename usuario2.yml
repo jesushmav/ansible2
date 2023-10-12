@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  tasks:
+    - name: ver usuario
+      shell: |
+        sudo su - jhm 
+        sudo -l
+        uptime
+      register: salidasudo
+    - name: ver salida
+      debug:
+      var: salidasudo
