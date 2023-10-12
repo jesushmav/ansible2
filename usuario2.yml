@@ -9,4 +9,4 @@
       register: salidasudo
     - name: ver salida
       debug:
-      var: salidasudo
+        var: salidasudo
