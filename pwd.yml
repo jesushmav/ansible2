@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+    - name: ver usuario
+      shell: |
+        pwd
+      register: salidapwd
+    - name: ver salida
+      debug:
+        var: salidapwd
