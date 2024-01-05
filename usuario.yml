@@ -3,8 +3,8 @@
   tasks:
     - name: ver usuario
       shell: |
-        sudo su - jhm 
-        sudo -l
+        /usr/bin/sudo su - jhm 
+        /usr/bin/sudo -l
       register: salidasudo
     - name: ver salida
       debug:
