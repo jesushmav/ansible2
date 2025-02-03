@@ -5,7 +5,7 @@
   tasks:
     - name: Comprobacion conexion puerto 4440
       ansible.builtin.git:
-        repo: git@github.com:jesushmav/ansible2.git
+        repo: https://github.com/jesushmav/ansible2.git
         dest: /tmp/checkout
         single_branch: yes
         version: main
