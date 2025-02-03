@@ -5,8 +5,9 @@
   tasks:
     - name: Comprobacion conexion puerto 4440
       ansible.builtin.git:
-        repo: https://github.com/jesushmav/ansible2.git
-        dest: /tmp/checkout
+        repo: https://github.dxc.com/Iberia-C-I-AI2Automation/AI2Automation.git
+        #repo: https://github.com/jesushmav/ansible2.git
+        dest: /tmp/checkout2
         single_branch: yes
         version: main
 
